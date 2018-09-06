@@ -1,0 +1,173 @@
+{{ define "layout" }}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>VANILLA</title>
+    <!-- Bootstrap4 -->
+    <link rel="stylesheet" href="/cssjs/bootstrap4/bootstrap.min.css">
+    <!-- datepicker -->
+    <link rel="stylesheet" href="/cssjs/datepicker/jquery-ui.css">
+    <!-- growl -->
+    <link rel="stylesheet" href="/cssjs/growl/jquery.growl.css">
+    <!-- Custom styles for this template -->
+    <link href="/cssjs/css/privatepage.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
+    <!-- <link href="/cssjs/css/tabulator.min.css" rel="stylesheet"> -->
+   <!--  <link href="/cssjs/css/bootstrap/tabulator_bootstrap4.min.css" rel="stylesheet"> -->
+
+  </head>
+  <body>
+  	
+	<!-- Nav tabs -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top px-4 py-3 shadow-sm p-3 mb-5 bg-white rounded" id="topLevelNavbar">
+    <a class="navbar-brand flex-column" href="/">VANILLA</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbardropdown1" aria-controls="navbardropdown1" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse flex-row" id="navbardropdown1">
+      <div class="flex-column midFlexColumn">
+    	<ul class="nav navbar-nav mr-auto" id="pills-tab-1" role="tablist">
+
+        <li class="nav-item">
+          <a class="nav-link active" id="pills-overview-tab" data-toggle="pill" href="#pills-overview" role="tab" aria-controls="pills-overview" aria-selected="true">Startseite</a>
+        </li>
+            <li class="nav-item">
+            <a class="nav-link" id="pills-firma-tab" data-toggle="pill" href="#pills-firma" role="tab" aria-controls="pills-firma" aria-selected="true">Firma</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-mitarbeiter-tab" data-toggle="pill" href="#pills-mitarbeiter" role="tab" aria-controls="pills-mitarbeiter" aria-selected="true">Mitarbeiter</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-auftraege-tab" data-toggle="pill" href="#pills-auftraege" role="tab" aria-controls="pills-auftraege" aria-selected="true">Aufträge</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-finanzen-tab" data-toggle="pill" href="#pills-finanzen" role="tab" aria-controls="pills-finanzen" aria-selected="true">Finanzen</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-vorlagen-tab" data-toggle="pill" href="#pills-vorlagen" role="tab" aria-controls="pills-vorlagen" aria-selected="true">Vorlagen</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-system-tab" data-toggle="pill" href="#pills-system" role="tab" aria-controls="pills-system" aria-selected="true">System</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav flex-row" id="subnavbar"></ul>
+      </div>
+        <!-- button -->
+      <div class="logoutbutton">
+
+        <form class="form-inline my-2 my-lg-0" action="/logout" method="post">
+          <button type="submit" class="btn btn-sm pt-0 logoutbuttonstyle" value="Logout"><span>Logout</span></button>
+        </form> 
+
+      </div>
+    </div>
+  </nav>
+
+
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+<li id ="Hauptseite" class="breadcrumb-item"></li>
+<li id ="Unterseite" class="breadcrumb-item active pl-1" aria-current="page"></li>
+</ol>
+</nav>
+
+
+
+	<!-- page content -->
+	<div class="tab-content container-fluid p-0" id="pills-tabContent">
+		<!-- Overview Section -->
+	  <div class="tab-pane fade show active" id="pills-overview" role="tabpanel" aria-labelledby="pills-overview-tab">{{ template "overview" . }}</div>
+    <div class="tab-pane fade" id="pills-firma" role="tabpanel" aria-labelledby="pills-firma-tab">{{ template "firma" . }}</div>
+    <div class="tab-pane fade" id="pills-mitarbeiter" role="tabpanel" aria-labelledby="pills-mitarbeiter-tab">{{ template "mitarbeiter" . }}</div>
+    <div class="tab-pane fade" id="pills-auftraege" role="tabpanel" aria-labelledby="pills-auftraege-tab">{{ template "auftraege" . }}</div>
+    <div class="tab-pane fade" id="pills-finanzen" role="tabpanel" aria-labelledby="pills-finanzen-tab">{{ template "finanzen" . }}</div>
+    <div class="tab-pane fade" id="pills-vorlagen" role="tabpanel" aria-labelledby="pills-vorlagen-tab">{{ template "vorlagen" . }}</div>
+    <div class="tab-pane fade" id="pills-system" role="tabpanel" aria-labelledby="pills-system-tab">{{ template "system" . }}</div>
+
+    <!-- footer fields -->
+	  <div  class="tab-pane fade" id="pills-impress" role="tabpanel" aria-labelledby="pills-impress-tab-2">{{ template "impress" . }}</div>
+    <div  class="tab-pane fade" id="pills-terms" role="tabpanel" aria-labelledby="pills-terms-tab-2">{{ template "terms" . }}</div>
+    <div  class="tab-pane fade" id="pills-privacy" role="tabpanel" aria-labelledby="pills-privacy-tab-2">{{ template "privacy" . }}</div>
+    <div  class="tab-pane fade" id="pills-faq" role="tabpanel" aria-labelledby="pills-faq-tab-2">{{ template "faq" . }}</div>
+
+	</div>
+
+
+
+	<!-- footer -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-bottom px-4 py-0" id="footerNavbar">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav nav" id="pills-tab-2" role="tablist">
+
+          <li class="nav-item">
+            <a class="nav-link disabled">&#169; VANILLA software UG (Haftungsbeschräkt)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">|</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-impress-tab-2" data-toggle="pill" role="tab" href="#pills-impress" aria-controls="pills-impress" aria-selected="false">Impressum</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-terms-tab-2" data-toggle="pill" role="tab" href="#pills-terms" aria-controls="pills-terms" aria-selected="false">Terms of Use</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-privacy-tab-2" data-toggle="pill" role="tab" href="#pills-privacy" aria-controls="pills-privacy" aria-selected="false">Privacy Policy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="pills-faq-tab-2" data-toggle="pill" role="tab" href="#pills-faq" aria-controls="pills-faq" aria-selected="false">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Bootstrap4 -->
+    <!-- <script type="text/javascript" src="/cssjs/bootstrap4/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/cssjs/bootstrap4/popper.min.js"></script>
+    <script type="text/javascript" src="/cssjs/bootstrap4/bootstrap.min.js"></script>
+    <!-- datepicker --
+    <script type="text/javascript" src="/cssjs/datepicker/jquery-ui.min.js"></script>
+    <!-- growl --
+    <script type="text/javascript" src="/cssjs/growl/jquery.growl.js"></script>
+    <!-- local javascript --
+    <script type="text/javascript" src="/cssjs/js/privatepage.js"></script>
+    <script type="text/javascript" src="/cssjs/js/tablemanagement.js"></script>
+  <script type="text/javascript" src="/cssjs/js/create_table.js"></script> -->
+
+
+
+
+  <script type="text/javascript" src="/cssjs/bootstrap4/jquery-3.3.1.min.js"></script>
+
+    <script type="text/javascript" src="/cssjs/datepicker/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+
+    <!-- <script type="text/javascript" src="/cssjs/js/tabulator.min.js"></script> -->
+    <!-- Bootstrap4 -->
+   
+    <script type="text/javascript" src="/cssjs/bootstrap4/popper.min.js"></script>
+    <script type="text/javascript" src="/cssjs/bootstrap4/bootstrap.min.js"></script>
+    <!-- datepicker -->
+
+    <!-- growl -->
+    <script type="text/javascript" src="/cssjs/growl/jquery.growl.js"></script>
+    <!-- local javascript -->
+    <script type="text/javascript" src="/cssjs/js/privatepage.js"></script>
+    <script type="text/javascript" src="/cssjs/js/tablemanagement.js"></script>
+  <script type="text/javascript" src="/cssjs/js/create_table.js"></script>
+  </body>
+</html>
+
+{{ end }}

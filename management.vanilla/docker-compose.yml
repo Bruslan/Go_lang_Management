@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+
+  management_web:
+    build: ./WEBSERVER
+    restart: always
+    links:
+      - management_cassandra
+    ports:
+      - "8900:8900"
+      - "8901:8901"
+    depends_on:
+      - management_cassandra
+    volumes:
+      - ./WEBSERVER:/go/src/github.com/vanilla/WEBSERVER
+
+  management_cassandra:
+    build: ./WEBSERVER/data
+    restart: always
+    volumes:
+      - ./WEBSERVER/data/cassandra_backup:/var/lib/cassandra/data

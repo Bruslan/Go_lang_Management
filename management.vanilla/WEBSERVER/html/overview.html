@@ -1,0 +1,385 @@
+{{ define "overview" }}
+<div class="tablebuttons row mb-3 ml-0">
+    <div class="button-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-eckig ml-0 btn-sm" data-toggle="modal" data-target="#exampleModal"><span>Fahrzeuge hinzufügen</span></button>
+        <button type="button" class="btn btn-eckig btn-sm" data-toggle="modal" data-target="#exampleModal"><span>Import CSV</span></button>
+        <button type="button" class="btn btn-eckig btn-sm" data-toggle="modal" data-target="#exampleModal"><span>Download CSV</span></button>
+        <button type="button" class="btn btn-eckig btn-sm" data-toggle="modal" data-target="#exampleModal"><span>Download PDF</span></button>
+    </div>
+    <button id="help" data-toggle="tooltip" data-placement="top" title="Tooltip on top" type="button" class="btn btn-eckig btn-sm mr-3"><span>Help</span></button>
+</div>
+<!-- Modal import csv -->
+<div class="modal fade" id="modalcsv" tabindex="-1" role="dialog" aria-labelledby="modalcsvLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalcsvLabel">Upload Fahrzeuge csv file</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="p-2" for="fahrzeugecsvfile">Klick den Button und wähle ein .csv file aus.</label>
+                    <input type="file" class="form-control-file" id="fahrzeugecsvfile">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                <button type="button" class="importcsv btn btn-primary btn-sm">Upload csv</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal insert -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Neues Fahrzeug</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="fahrzeuginputs" class="">
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Kennzeichen</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control rounded-0" placeholder="Kennzeichen">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Mitarbeiter</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control rounded-0" placeholder="Mitarbeiternummer">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label ">Tuvbis</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control rounded-0 datepicker" placeholder="Tuvbis">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label ">Servicefallig</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control rounded-0 datepicker" placeholder="Servicefallig">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Kilometerstand</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control rounded-0" placeholder="Kilometerstand">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Notiz</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control rounded-0" placeholder="Notiz">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-eckig btn-sm" data-dismiss="modal">Abrechen</button>
+                    <button type="submit" class="btn btn-eckig btn-sm">Speichern</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal edit -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel2">Fahrzeug bearbeiten</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="fahrzeuginputs-edit" class="text-center">
+                <div class="modal-body">
+                    <input type="text" class="form-control mb-3 hidden" placeholder="Fahrzeugnummer" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control mb-3" placeholder="Kennzeichen" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control mb-3" placeholder="Mitarbeiternummer" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control mb-3 datepicker" placeholder="Tuvbis" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control mb-3 datepicker" placeholder="Servicefallig" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="number" class="form-control mb-3" placeholder="Kilometerstand" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control mb-3" placeholder="Notiz" aria-label="Username" aria-describedby="basic-addon1">
+                    <div id="responsemsg2"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Abrechen</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal edit -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel2">Fahrzeug bearbeiten</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="fahrzeuginputs-edit" class="">
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Kennzeichen</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control rounded-0" placeholder="Kennzeichen">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Mitarbeiter</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control rounded-0" placeholder="Mitarbeiternummer">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label ">Tuvbis</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control rounded-0 datepicker" placeholder="Tuvbis">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label ">Servicefallig</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control rounded-0 datepicker" placeholder="Servicefallig">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Kilometerstand</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control rounded-0" placeholder="Kilometerstand">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-4 col-form-label">Notiz</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control rounded-0" placeholder="Notiz">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Abrechen</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div id="checkboxes" class="row justify-content-center border mb-3 mx-0">
+    <div class="checkbox mx-2">
+        <label class="custom-control custom-checkbox">
+            <div class="innerDivInline">
+                <input type="checkbox" class="custom-control-input" name="Fahrzeugnummer" checked>
+                <span class="custom-control-indicator mb-1 mx-1"></span>
+            </div>
+            <div class="innerDivInline">
+                Fahrzeugnummer
+            </div>
+        </label>
+    </div>
+    <div class="checkbox mx-2">
+        <label class="custom-control custom-checkbox">
+            <div class="innerDivInline">
+                <input type="checkbox" class="custom-control-input" name="Kennzeichen" checked>
+                <span class="custom-control-indicator mb-1 mx-1"></span>
+            </div>
+            <div class="innerDivInline">
+                Kennzeichen
+            </div>
+        </label>
+    </div>
+    <div class="checkbox mx-2">
+        <label class="custom-control custom-checkbox">
+            <div class="innerDivInline">
+                <input type="checkbox" class="custom-control-input" name="Mitarbeiternummer" checked>
+                <span class="custom-control-indicator mb-1 mx-1"></span>
+            </div>
+            <div class="innerDivInline">
+                Mitarbeiternummer
+            </div>
+        </label>
+    </div>
+    <div class="checkbox mx-2">
+        <label class="custom-control custom-checkbox">
+            <div class="innerDivInline">
+                <input type="checkbox" class="custom-control-input" name="Tuvbis" checked>
+                <span class="custom-control-indicator mb-1 mx-1"></span>
+            </div>
+            <div class="innerDivInline">
+                Tuvbis
+            </div>
+        </label>
+    </div>
+    <div class="checkbox mx-2">
+        <label class="custom-control custom-checkbox">
+            <div class="innerDivInline">
+                <input type="checkbox" class="custom-control-input" name="Servicefallig" checked>
+                <span class="custom-control-indicator mb-1 mx-1"></span>
+            </div>
+            <div class="innerDivInline">
+                Servicefällig
+            </div>
+        </label>
+    </div>
+    <div class="checkbox mx-2">
+        <label class="custom-control custom-checkbox">
+            <div class="innerDivInline">
+                <input type="checkbox" class="custom-control-input" name="Kilometerstand" checked>
+                <span class="custom-control-indicator mb-1 mx-1"></span>
+            </div>
+            <div class="innerDivInline">
+                Kilometerstand
+            </div>
+        </label>
+    </div>
+    <div class="checkbox mx-2">
+        <label class="custom-control custom-checkbox">
+            <div class="innerDivInline">
+                <input type="checkbox" class="custom-control-input" name="Notiz" checked>
+                <span class="custom-control-indicator mb-1 mx-1"></span>
+            </div>
+            <div class="innerDivInline">
+                Notiz
+            </div>
+        </label>
+    </div>
+</div>
+<div class="row m-0 justify-content-end">
+    <input type="text" id="searchTable" onkeyup="filterTable()" placeholder="Suche ...">
+</div>
+<!-- <div class="table-responsive table-body-scroll-y">
+  <table class="table table-hover" name="fahrzeuge">
+    <thead>
+    <tr>
+      <th name="Fahrzeugnummer" scope="col">Fahrzeugnummer</th>
+      <th name="Kennzeichen" scope="col">Kennzeichen</th>
+      <th name="Mitarbeiternummer" scope="col">Mitarbeiternummer</th>
+      <th name="Tuvbis" scope="col">Tuvbis</th>
+      <th name="Servicefallig" scope="col">Servicefällig</th>
+      <th name="Kilometerstand" scope="col">Kilometerstand</th>
+      <th name="Notiz" scope="col">Notiz</th>
+      <th name="edit" scope="col">Editieren</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {{range .}}
+      <tr id="collapseOne{{.Fahrzeugnummer_in}}">
+        <td name="Fahrzeugnummer">{{.Fahrzeugnummer_in}}</td>
+        <td name="Kennzeichen">{{.Kennzeichen_in}}</td>
+        <td name="Mitarbeiternummer">{{if not .Mitarbeiternummer_in}}-{{ else }}{{.Mitarbeiternummer_in}}{{ end }}</td>
+        <td name="Tuvbis">{{.Tuvbis_in}}</td>
+        <td name="Servicefallig">{{.Servicefallig_in}}</td>
+        <td name="Kilometerstand">{{if eq .Kilometerstand_in 0}}-{{ else }}{{.Kilometerstand_in}} km{{ end }}</td>
+        <td name="Notiz">{{.Notiz_in}}</td>
+
+        <td name="edit" class="btn-link mb-2 mt-2 align-middle" >
+
+          <div class="row" style="width: 150px">
+
+          <i data-toggle="modal" data-target="#exampleModal2" class="update-fahrzeug far fa-edit col m-0 ml-3 p-0"></i>
+          <i name ="delete" class="delete-fahrzeug far fa-trash-alt col m-0 ml-3 p-0"></i>
+          <i  data-toggle="collapse" data-target="#collapseOne{{.Fahrzeugnummer_in}}" aria-expanded="true" aria-controls="collapseOne{{.Fahrzeugnummer_in}}" class="protocol far fa-file-alt col ml-1mr-3 "></i>
+
+          </div>
+        </td>
+
+      </tr>
+
+    <tbody id="collapseOne{{.Fahrzeugnummer_in}}" class="collapse"></tbody>
+    {{end}}
+    </tbody>
+  </table>
+</div> -->
+
+
+<!-- <div class="container"> -->
+<div class="row tablehead m-0 p-0">
+    <div onclick="sortTable(0)" class="sort_caret"># <i class="fas fa-caret-down"></i></div>
+    <div onclick="sortTable(1)" class="sort_caret">Name </div>
+    <div onclick="sortTable(2)" class="sort_caret">Points </div>
+</div>
+<div class="table-responsive">
+    <table id="fahrzeuge" class="table tablebody table-hover">
+        <thead class="hidden">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="no-protocol">
+                <td>1</td>
+                <td>Mike Adams</td>
+                <td>
+                    <button id="mybutton1"></button>
+                </td>
+            </tr>
+            <tr class="protocol mybutton1 hidden">
+                <td class="tr-protocol">7</td>
+                <td class="tr-protocol">Mike Galivan</td>
+                <td class="tr-protocol">44</td>
+            </tr>
+             <tr class="protocol mybutton1 hidden">
+                <td class="tr-protocol">2</td>
+                <td class="tr-protocol">Holly Gswfopekwfpowkpfoejkpefaalivan</td>
+                <td class="tr-protocol">44</td>
+            </tr>
+            <tr class="no-protocol">
+                <td>3</td>
+                <td>njecasun</td>
+                <td>
+                    <button id="mybutton12"></button>
+                </td>
+            </tr>
+            <tr class="no-protocol">
+                <td>3</td>
+                <td>Mary Shea</td>
+                <td>
+                    <button id="mybutton12"></button>
+                </td>
+            </tr>
+            <tr class="no-protocol">
+                <td>4</td>
+                <td>Jim Adams</td>
+                <td>
+                    <button id="mybutton12"></button>
+                </td>
+            </tr>
+            <tr class="no-protocol">
+                <td>4</td>
+                <td>Jim Adams</td>
+                <td>
+                    <button id="mybutton12"></button>
+                </td>
+            </tr>
+            <tr class="no-protocol">
+                <td>4</td>
+                <td>Jim Adams</td>
+                <td>
+                    <button id="mybutton12"></button>
+                </td>
+            </tr>
+            <tr class="no-protocol">
+                <td>4</td>
+                <td>Jim Adams</td>
+                <td>
+                    <button id="mybutton12"></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <div class="mb-5 pb-5">nananan</div> -->
+{{ end }}

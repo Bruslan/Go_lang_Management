@@ -1,0 +1,6 @@
+{
+  "Address"			: "0.0.0.0",
+  "Static" 			: "cssjs",
+  "HttpPort"		: "8900",
+  "HttpsPort"		: "8901"
+}

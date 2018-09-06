@@ -1,0 +1,14 @@
+INFO 2018/08/21 18:56:25 utilities.go:166: Failed to get cookie <nil>
+INFO 2018/08/22 19:33:08 utilities.go:166: Failed to get cookie <nil>
+INFO 2018/08/22 20:52:09 utilities.go:166: Failed to get cookie <nil>
+INFO 2018/08/22 21:23:14 utilities.go:166: Failed to get cookie <nil>
+INFO 2018/08/22 22:21:01 utilities.go:166: Failed to get cookie <nil>
+INFO 2018/08/22 22:30:24 utilities.go:166: Failed to get cookie <nil>
+INFO 2018/08/22 23:05:57 utilities.go:166: Failed to get cookie <nil>
+INFO 2018/08/22 23:32:54 utilities.go:166: Failed to get cookie <nil>
+INFO 2018/08/24 21:15:57 utilities.go:166: Failed to get cookie <nil>
+INFO 2018/08/24 21:41:27 utilities.go:166: Failed to get cookie <nil>
+WARNING 2018/08/25 08:10:12 utilities.go:176: Insert Fahrzeuge Error: can not marshal gocql.UUID into int
+WARNING 2018/08/25 08:14:18 utilities.go:176: Insert Fahrzeuge Error: can not marshal gocql.UUID into int
+INFO 2018/08/25 09:58:45 utilities.go:166: Failed to get cookie <nil>
+INFO 2018/08/25 19:40:38 utilities.go:166: Failed to get cookie <nil>

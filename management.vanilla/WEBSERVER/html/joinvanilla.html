@@ -1,0 +1,31 @@
+{{ define "joinvanilla" }}
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container text-center">
+    <h1 class="display-4">Register</h1>
+    <p class="text-ceter mt-4">Sing up to access full service experience</p>
+  </div>
+    
+    <form id="sign-up" class="form-signin text-center">
+    <input type="email" class="form-control btn-sm" name="email2" placeholder="Email address" required autofocus>
+    <input type="password" class="form-control btn-sm mb-3" name="passw1" placeholder="Password" required>
+    <input type="password" class="form-control btn-sm" name="passw2" placeholder="Confirm password" required>
+    <div class="form-check my-2">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        Agree to <a href="/about" class="alert-link">Terms of Use</a>.
+      </label>
+    </div>
+    <button class="btn btn-sm btn-outline-light btn-block" type="submit">Create Account</button>
+    </form>
+
+    <div id ="responsemsg"></div>
+    <br>
+
+</div>
+
+
+
+
+
+{{ end }}
